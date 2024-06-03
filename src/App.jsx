@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
@@ -9,9 +9,12 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ViewPage from "./pages/ViewPage";
 import AccountPage from "./pages/AccountPage";
 
+export const Fanta = createContext();
 const App = () => {
+  const [id , setId] = useState([])
   return (
-    <div className="flex flex-col mx-auto max-w-[1240px] w-full px-5 bg-white">
+    <Fanta.Provider value={{id , setId}}>
+      <div className="flex flex-col mx-auto max-w-[1240px] w-full px-5 bg-white">
       <Router>
         <Header />
         <Routes>
@@ -25,6 +28,7 @@ const App = () => {
         <Footer />
       </Router>
     </div>
+    </Fanta.Provider>
   );
 };
 

@@ -1,11 +1,19 @@
 import React from "react";
 import heroBg from "../assets/imgs/heroBg.png";
+import sale from "../assets/imgs/saleHm.png";
+import summercac from "../assets/imgs/summercac.jpeg";
+import arrowleft from "../assets/icons/arrowleft.svg";
+import stylingtrends from "../assets/imgs/stylingtrends.png";
 import { Link } from "react-router-dom";
 import ProductsHm from "../components/homeComponents/ProductsHm";
+import MinimumDistanceSlider from "../components/homeComponents/SliderHm";
+import { items } from "../services/items";
+import { blog } from "../services/blog";
+import { sizes } from "../services/sizes";
 
 const HomePage = () => {
   return (
-    <div className=" w-full flex flex-col items-center justify-center pt-4">
+    <div className="w-full flex flex-col items-center justify-center pt-4">
       <section className="flex px-10 w-full items-center justify-between bg-[#fafafa]">
         <div>
           <div className="text-neutral-700 text-sm font-medium  uppercase leading-none tracking-wider">
@@ -31,99 +39,141 @@ const HomePage = () => {
         </div>
       </section>
       <section className="w-full pt-10 flex p-0 items-start justify-between">
-        {/* will delete */}
-
-        <div className="w-[25%] h-[774px] relative">
-          <div className="w-full h-[774px] left-0 top-0 absolute bg-neutral-50" />
-          <div className="w-[268px] h-[383px] left-[18px] top-[14px] absolute">
-            <div className="left-0 top-0 absolute text-neutral-700 text-lg font-bold font-['Cera Pro'] leading-none">
-              Categories
+        <div className="flex flex-col w-[25%] items-center justify-center bg-[#fafafa] px-7 pt-4 ">
+          <div className="flex flex-col w-full items-center justify-center gap-10">
+            <div className="flex flex-col w-full gap-2">
+              <h1 className="text-neutral-700 text-lg font-bold -ml-2">
+                Categories
+              </h1>
+              <ul className="flex w-full flex-col gap-4">
+                {items.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex w-full items-center justify-between cursor-pointer text-neutral-700 text-[15px] font-normal hover:text-green-500"
+                  >
+                    <p>{item.name}</p>
+                    <p>({item.count})</p>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="left-[12px] top-[23px] absolute">
-              <span>
-                House Plants
-                <br />
-              </span>
-              <span>
-                Potter Plants
-                <br />
-                Seeds
-                <br />
-                Small Plants
-                <br />
-                Big Plants
-                <br />
-                Succulents
-                <br />
-                Trerrariums
-                <br />
-                Gardening
-                <br />
-                Accessories
-              </span>
+            <div className="flex w-full items-start justify-between flex-col gap-2">
+              <h1 className="text-neutral-700 text-lg font-bold -ml-2 mb-3">
+                Price Range
+              </h1>
+              <MinimumDistanceSlider />
+              <p className="flex items-center justify-center font-bold text-green-500 text-[15px] gap-1">
+                <span className="text-neutral-700 text-[15px] font-normal">
+                  Price:
+                </span>{" "}
+                $39-$1230
+              </p>
+              <button className="bg-green-500 text-white py-2 px-6 rounded-md">
+                Filter
+              </button>
             </div>
-            <div className="left-[240px] top-[23px] absolute text-right">
-              <span>
-                (33)
-                <br />
-              </span>
-              <span>
-                (12)
-                <br />
-                (65)
-                <br />
-                (39)
-                <br />
-                (23)
-                <br />
-                (17)
-                <br />
-                (19)
-                <br />
-                (13)
-                <br />
-                (18)
-              </span>
+            <div className="flex flex-col w-full items-start justify-center gap-2">
+              <h1 className="text-neutral-700 text-lg font-bold -ml-2">Size</h1>
+              <ul className="flex w-full flex-col gap-4">
+                {sizes.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex w-full items-center justify-between cursor-pointer text-neutral-700 text-[15px] font-normal hover:text-green-500"
+                  >
+                    <p>{item.name}</p>
+                    <p>({item.count})</p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div className="w-[268px] h-[143px] left-[18px] top-[612px] absolute">
-            <div className="left-0 top-0 absolute text-neutral-700 text-lg font-bold font-['Cera Pro'] leading-none">
-              Size
-            </div>
-            <div className="left-[12px] top-[23px] absolute text-neutral-700 text-[15px] font-normal font-['Cera Pro'] leading-10">
-              Small
-              <br />
-              Medium
-              <br />
-              Large
-            </div>
-            <div className="left-[238px] top-[23px] absolute text-right text-neutral-700 text-[15px] font-normal font-['Cera Pro'] leading-10">
-              (119)
-              <br />
-              (86)
-              <br />
-              (78)
-            </div>
-          </div>
-          <div className="w-[226px] h-[133px] left-[18px] top-[433px] absolute">
-            <div className="left-0 top-0 absolute text-neutral-700 text-lg font-bold font-['Cera Pro'] leading-none">
-              Price Range
-            </div>
-            <div className="w-[209px] h-[0px] left-[17px] top-[45px] absolute border-4 border-green-500/opacity-20"></div>
-            <div className="w-[161px] h-[0px] left-[17px] top-[45px] absolute border-4 border-green-500"></div>
-            <div className="w-[15px] h-[15px] left-[12px] top-[36px] absolute bg-green-500 rounded-full border-2 border-white" />
-            <div className="w-[15px] h-[15px] left-[167px] top-[36px] absolute bg-green-500 rounded-full border-2 border-white" />
-            <div className="left-[12px] top-[66px] absolute">
-              <span>Price: </span>
-              <span>$39 - $1230</span>
-            </div>
-            <div className="w-[90px] h-[35px] left-[12px] top-[98px] absolute bg-green-500 rounded-md" />
-            <div className="left-[38px] top-[106px] absolute text-white text-base font-bold font-['Cera Pro'] leading-tight">
-              Filter
-            </div>
+          <div className="w-[355px] mt-10">
+            <img src={sale} alt="" className="" />
           </div>
         </div>
         <ProductsHm />
+      </section>
+      <section className="flex  items-center justify-between  w-full pt-[150px]">
+        <div className="flex relative w-[580px]">
+          <div className="flex items-end justify-end w-full p-8 bg-[#fafafa] gap-8">
+            <img src={summercac} alt="" className="absolute left-0 bottom-0 " />
+            <div className="flex flex-col items-end text-end justify-center gap-5 z-10">
+              <h1 className="text-right text-neutral-700 text-lg font-black">
+                Summer cactus <br /> & succulents
+              </h1>
+              <p className="text-neutral-500 text-sm font-normal">
+                We are an online plant shop offering a wide <br /> range of
+                cheap and trendy plants
+              </p>
+              <Link
+                to="/shop"
+                className="w-[140px] h-10 bg-green-500 flex items-center justify-center gap-2 rounded-md text-white text-sm font-medium"
+              >
+                Find More
+                <img src={arrowleft} alt="" />
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="flex relative w-[580px]">
+          <div className="flex items-end justify-end w-full p-8 bg-[#fafafa] gap-8">
+            <img
+              src={stylingtrends}
+              alt=""
+              className="absolute left-0 bottom-0 "
+            />
+            <div className="flex flex-col items-end text-end justify-center gap-5 z-10">
+              <h1 className="text-right text-neutral-700 text-lg font-black">
+                Styling trends <br /> & much more
+              </h1>
+              <p className="text-neutral-500 text-sm font-normal">
+                We are an online plant shop offering a wide <br /> range of
+                cheap and trendy plants
+              </p>
+              <Link
+                to="/shop"
+                className="w-[140px] h-10 bg-green-500 flex items-center justify-center gap-2 rounded-md text-white text-sm font-medium"
+              >
+                Find More
+                <img src={arrowleft} alt="" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="flex w-full flex-col mt-32">
+        <div>
+          <h1 className="text-center text-neutral-700 text-3xl font-bold">
+            Our Blog Posts
+          </h1>
+          <p className="text-center mt-4 text-neutral-500 text-sm font-normal">
+            We are an online plant shop offering a wide range of cheap and
+            trendy plants.
+          </p>
+        </div>
+        <div className="flex items-center justify-between   w-full">
+          <div className="flex w-full mt-9 justify-between ">
+            {blog.map((post) => (
+              <div key={post.id}>
+                <img src={post.img} alt="" className="w-[246px] h-[140px]" />
+                <div className="flex flex-col gap-2 bg-[#fafafa] p-3">
+                  <p className="text-green-500 text-sm font-medium ">
+                    {post.date}
+                  </p>
+                  <h1 className="text-neutral-700 text-xl font-bold w-[189px]">
+                    {post.title}
+                  </h1>
+                  <p className="text-neutral-500 text-sm font-normal w-[220px]">
+                    {post.desc}
+                  </p>
+                  <p className="text-neutral-700 text-sm font-medium cursor-pointer hover:text-green-500 ">
+                    {post.more}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );

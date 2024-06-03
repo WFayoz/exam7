@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   transition: 300ms;
+}
+
+.active{
+  border-bottom: 4px solid #1aad51;
+  padding-bottom: 25px;
+  font-weight: 700;
+  transition: all ease 500ms;
+  
 }
