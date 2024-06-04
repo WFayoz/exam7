@@ -2,16 +2,16 @@ import React, { useContext, useState } from "react";
 import data from "../../services/data";
 import { Link } from "react-router-dom";
 import arrowdown from "../../assets/icons/arrowdown.svg";
-import { useSelector } from "react-redux";
 import { Fanta } from "../../App";
+import { Cola } from "../../App";
 
 const ProductsHm = () => {
-  const { products, total, amount } = useSelector((store) => store.basket);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState("all");
   const [sortOption, setSortOption] = useState("default");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { id, setId } = useContext(Fanta);
+  const { secid, setSecId } = useContext(Cola);
 
   const itemsPerPage = 9;
 
@@ -150,17 +150,16 @@ const ProductsHm = () => {
       </div>
       <div className="gap-[33px] grid grid-cols-3 mt-5 w-full">
         {currentItems.map((item) => (
-          <Link
-            to="/shop"
-            onClick={() => setId([item.id])}
-            key={item.id}
-            className="flex flex-col w-[250px] text-start items-start justify-center gap-3 border-t-2 border-transparent hover:border-green-500"
-          >
-            <img
-              src={item.image_url}
-              alt={item.common_name}
-              className="w-[250px] h-[250px] bg-neutral-50"
-            />
+          //jhhhhbhhh/////////////////////
+
+          <div className="flex flex-col w-[250px] text-start items-start justify-center gap-3 border-t-2 border-transparent hover:border-green-500 ">
+            <Link to="/shop" onClick={() => setId([item.id])} key={item.id}>
+              <img
+                src={item.image_url}
+                alt={item.common_name}
+                className="w-[250px] h-[250px] bg-neutral-50"
+              />
+            </Link>
             <div className="flex flex-col items-start justify-start gap-2">
               <h2 className="text-neutral-700 text-base font-normal leading-none">
                 {item.scientific_name}
@@ -168,8 +167,15 @@ const ProductsHm = () => {
               <p className="text-green-500 text-lg font-bold leading-none">
                 ${item.price}
               </p>
+              <p
+                onClick={() =>
+                  secid.includes(item.id) ? null : setSecId([...secid, item.id])
+                }
+              >
+                x
+              </p>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
       {totalPages > 1 && (

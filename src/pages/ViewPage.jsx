@@ -1,16 +1,13 @@
 import React, { useContext, useState } from "react";
 import heart from "../assets/icons/heart.svg";
 import BasicRating from "../components/shopComponents/Stars";
-import { Fanta } from "../App";
+import { Cola, Fanta } from "../App";
 import Data from "../services/data";
-import { useDispatch, useSelector } from "react-redux";
-import { decreaseAmount, increaseAmount } from "../features/basketSlice";
 
 const ViewPage = () => {
   const [activeTab, setActiveTab] = useState("description");
   const { id, setId } = useContext(Fanta);
-  const dispatch = useDispatch();
-  const amount = useSelector((store) => store.basket.amount);
+  const { secid, setSecId } = useContext(Cola);
 
   return (
     <div className="w-full items-center just ify-center">
@@ -84,24 +81,25 @@ const ViewPage = () => {
                   </div>
                   <div className="flex gap-5 items-center justify-start mt-6">
                     <div className="flex items-center justify-center gap-5">
-                      <button
-                        onClick={() => dispatch(decreaseAmount({ id }))}
-                        className=" flex items-center justify-center w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] font-normal"
-                      >
+                      <button className=" flex items-center justify-center w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] font-normal">
                         -
                       </button>
-                      <p>{amount}</p>
-                      <button
-                        onClick={() => dispatch(increaseAmount({ id }))}
-                        className="w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] flex items-center justify-center text-center font-normal"
-                      >
+                      <p>0</p>
+                      <button className="w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] flex items-center justify-center text-center font-normal">
                         +
                       </button>
                     </div>
                     <button className="w-[130px] text-white uppercase text-sm font-bold h-10 bg-green-500 rounded-md">
                       Buy NOW
                     </button>
-                    <button className="w-[130px] text-white uppercase text-sm font-bold h-10 bg-green-500 rounded-md">
+                    <button
+                      onClick={() =>
+                        secid.includes(item.id)
+                          ? null
+                          : setSecId([...secid, item.id])
+                      }
+                      className="w-[130px] text-white uppercase text-sm font-bold h-10 bg-green-500 rounded-md"
+                    >
                       Add to cart
                     </button>
                     <button className="w-10 h-10 border border-green-500 flex items-center justify-center rounded-md">

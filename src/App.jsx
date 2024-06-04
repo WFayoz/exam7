@@ -10,24 +10,28 @@ import ViewPage from "./pages/ViewPage";
 import AccountPage from "./pages/AccountPage";
 
 export const Fanta = createContext();
+export const Cola = createContext();
 const App = () => {
-  const [id , setId] = useState([])
+  const [id, setId] = useState([]);
+  const [secid, setSecId] = useState([]);
   return (
-    <Fanta.Provider value={{id , setId}}>
-      <div className="flex flex-col mx-auto max-w-[1240px] w-full px-5 bg-white">
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/Address" element={<AddressPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/Checkout" element={<CheckoutPage />} />
-          <Route path="/shop" element={<ViewPage />} />
-          <Route path="/Account" element={<AccountPage />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+    <Fanta.Provider value={{ id, setId }}>
+      <Cola.Provider value={{ secid, setSecId }}>
+        <div className="flex flex-col mx-auto max-w-[1240px] w-full px-5 bg-white">
+          <Router>
+            <Header />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/Address" element={<AddressPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/Checkout" element={<CheckoutPage />} />
+              <Route path="/shop" element={<ViewPage />} />
+              <Route path="/Account" element={<AccountPage />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </div>
+      </Cola.Provider>
     </Fanta.Provider>
   );
 };

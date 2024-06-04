@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/icons/logo.svg";
 import search from "../../assets/icons/headerSearch.svg";
 import basket from "../../assets/icons/headerBasket.svg";
 import login from "../../assets/icons/headerLogin.svg";
-import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { Cola } from "../../App";
 
 const Header = () => {
-  const amount = useSelector((store) => store.basket.amount);
+  const { secid, setSecId } = useContext(Cola);
+
   return (
     <div className="flex w-full">
       <nav className="w-full flex border-b-green-500 border-b items-center justify-between">
@@ -17,12 +18,12 @@ const Header = () => {
           </Link>
         </div>
         <ul className="flex gap-12 items-center justify-center">
-          <NavLink
+          <Link
             to="/"
-            className="text-neutral-700 text-base font-normal py-5 border-b-4"
+            className="text-neutral-700 text-base font-normal py-5 border-b-4 border-transparent"
           >
             Home
-          </NavLink>
+          </Link>
           <Link
             to="/shop"
             className="text-neutral-700 text-base font-normal py-5 border-b-4 border-transparent"
@@ -46,7 +47,7 @@ const Header = () => {
           >
             <img src={basket} alt="basket" />
             <div className="flex absolute right-0 top-0 w-4 h-4 bg-green-500 rounded-full text-white items-center justify-center text-[8px]">
-              {amount}
+              {secid.length}
             </div>
           </Link>
           <button className="flex gap-1 items-center bg-green-500 rounded-lg justify-center px-[17px] py-2">

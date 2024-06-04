@@ -24,13 +24,12 @@ const basketSlice = createSlice({
       }
     },
     removeItem: (state, { payload }) => {
-      state.products = state.products.filter(
-        (item) => item.id !== payload.id
-      );
+      state.products = state.products.filter((item) => item.id !== payload.id);
     },
   },
 });
 
-export const { increaseAmount, decreaseAmount, removeItem } = basketSlice.actions;
+export const { increaseAmount, decreaseAmount, removeItem } =
+  basketSlice.actions;
 
 export default basketSlice.reducer;
