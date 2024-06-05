@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import { useState, useEffect, useContext } from "react";
 import Data from "../../services/data";
+import { Fanta } from "../../App";
 
 const SliderUI = () => {
+  const { id, setId } = useContext(Fanta);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -22,17 +22,17 @@ const SliderUI = () => {
     <div className="mt-28">
       <div className="w-full overflow-hidden">
         <div
-          className="mt-28 flex transition-transform duration-1000"
+          className="mt-28 flex  transition-transform duration-1000"
           style={{ transform: `translateX(-${count * 100}%)` }}
         >
           {Data.slice(0, 15).map((item) => {
             return (
               <div
                 key={item.id}
-                className="w-1/5 flex-shrink-0 px-2"
-                onClick={() => setAbout([item.id])}
+                className="w-1/5  flex-shrink-0 px-2"
+                onClick={() => setId([item.id])}
               >
-                <div>
+                <div className="cursor-pointer h-80 flex flex-col items-start justify-end hover:pb-5">
                   <img src={item.image_url} alt="img" className="w-full h-60" />
                   <p className="text-[#3D3D3D]">{item.common_name}</p>
                   <p className="text-green-500 font-bold">${item.price}.00</p>

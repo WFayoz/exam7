@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import { Cola } from "../App";
 import Data from "../services/data";
 import Delete from "../assets/icons/delete.svg";
+import SliderUI from "../components/homeComponents/SliderB";
 
 const CartPage = () => {
   const { secid } = useContext(Cola);
-  
-  const initialCartItems = Data.filter(item => secid.includes(item.id)).map(item => ({
-    ...item,
-    quantity: 1,
-  }));
-  
+
+  const initialCartItems = Data.filter((item) => secid.includes(item.id)).map(
+    (item) => ({
+      ...item,
+      quantity: 1,
+    })
+  );
+
   const [cartItems, setCartItems] = useState(initialCartItems);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -20,18 +23,25 @@ const CartPage = () => {
   }, [cartItems]);
 
   const calculateTotal = () => {
-    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const total = cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
     setTotalPrice(total);
   };
 
   const handleQuantityChange = (id, change) => {
-    setCartItems(cartItems.map(item => 
-      item.id === id ? { ...item, quantity: Math.max(1, item.quantity + change) } : item
-    ));
+    setCartItems(
+      cartItems.map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity + change) }
+          : item
+      )
+    );
   };
 
   const handleDelete = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
   return (
@@ -39,22 +49,38 @@ const CartPage = () => {
       <div className="flex w-full items-start justify-between">
         <div className="w-[72%] flex items-start justify-start flex-col">
           <div className="flex">
-            <h1 className="text-neutral-700 text-lg font-bold leading-none">Products</h1>
-            <h1 className="text-neutral-700 text-lg font-bold ml-[245px] leading-none">Price</h1>
-            <h1 className="text-neutral-700 text-lg font-bold ml-[108px] leading-none">Quantity</h1>
-            <h1 className="text-neutral-700 text-lg font-bold ml-[97px] leading-none">Total</h1>
+            <h1 className="text-neutral-700 text-lg font-bold leading-none">
+              Products
+            </h1>
+            <h1 className="text-neutral-700 text-lg font-bold ml-[245px] leading-none">
+              Price
+            </h1>
+            <h1 className="text-neutral-700 text-lg font-bold ml-[108px] leading-none">
+              Quantity
+            </h1>
+            <h1 className="text-neutral-700 text-lg font-bold ml-[97px] leading-none">
+              Total
+            </h1>
           </div>
           <div className="w-full mt-3 h-[0px] border border-green-500/50"></div>
           <div className="flex flex-col w-full gap-3 h-72 overflow-scroll py-5">
-            {cartItems.map(item => (
-              <div key={item.id} className="flex w-full items-center bg-[#fafafa] justify-start">
-                <img src={item.image_url} alt="" className="w-[70px] h-[70px]" />
+            {cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex w-full items-center bg-[#fafafa] justify-start"
+              >
+                <img
+                  src={item.image_url}
+                  alt=""
+                  className="w-[70px] h-[70px]"
+                />
                 <div className="flex flex-col gap-1 ml-4">
                   <h1 className="text-neutral-700 w-[144px] text-base font-medium leading-none">
                     {item.common_name}
                   </h1>
                   <p className="text-neutral-400 text-sm font-normal leading-none">
-                    SKU: <span className="text-neutral-500 text-sm font-normal leading-none">
+                    SKU:{" "}
+                    <span className="text-neutral-500 text-sm font-normal leading-none">
                       {item.genus_id}
                     </span>
                   </p>
@@ -96,15 +122,23 @@ const CartPage = () => {
           <div></div>
         </div>
         <div className="flex w-[23%] flex-col items-start justify-center">
-          <h1 className="text-neutral-700 text-lg font-bold leading-none">Cart Totals</h1>
+          <h1 className="text-neutral-700 text-lg font-bold leading-none">
+            Cart Totals
+          </h1>
           <div className="w-full h-[0px] border border-green-500/50 mt-3"></div>
-          <p className="text-neutral-700 text-sm font-normal mt-3 leading-none">Coupon Apply</p>
+          <p className="text-neutral-700 text-sm font-normal mt-3 leading-none">
+            Coupon Apply
+          </p>
           <div></div>
           <div className="flex flex-col items-start justify-center gap-4 mt-5">
-            <p className="text-neutral-700 text-[15px] font-normal">Subtotal: ${totalPrice}</p>
+            <p className="text-neutral-700 text-[15px] font-normal">
+              Subtotal: ${totalPrice}
+            </p>
             <p className="text-neutral-700 text-[15px] font-normal">Coupon</p>
             <p className="text-neutral-700 text-[15px] font-normal">Shipping</p>
-            <h1 className="text-neutral-700 text-base font-bold">Total: ${totalPrice}</h1>
+            <h1 className="text-neutral-700 text-base font-bold">
+              Total: ${totalPrice}
+            </h1>
           </div>
           <div className="flex flex-col items-center justify-center mt-7">
             <Link
@@ -122,6 +156,7 @@ const CartPage = () => {
           </div>
         </div>
       </div>
+      <SliderUI />
     </div>
   );
 };

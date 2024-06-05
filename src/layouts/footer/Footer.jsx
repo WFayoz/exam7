@@ -36,7 +36,7 @@ const Footer = () => {
               placeholder="enter your email address..."
               className="flex-1 p-2 border border-gray-300 rounded-l-md outline-none"
             />
-            <button className="h-full bg-green-700 text-white py-2 px-4 rounded-r-md cursor-pointer">
+            <button className="h-full bg-green-500 text-white py-2 px-8 rounded-r-md cursor-pointer">
               Join
             </button>
           </div>
@@ -112,7 +112,7 @@ const Footer = () => {
               {socialLinks.map(({ href, icon: Icon }, idx) => (
                 <p key={idx} className="border p-2 rounded-md border-[#46A35833] cursor-pointer">
                   <a href={href} target="_blank" rel="noopener noreferrer">
-                    <Icon className="text-[#46A35899]" />
+                    <Icon className="text-green-500" />
                   </a>
                 </p>
               ))}

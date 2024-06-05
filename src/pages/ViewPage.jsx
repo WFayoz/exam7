@@ -5,12 +5,15 @@ import { Cola, Fanta } from "../App";
 import Data from "../services/data";
 import SliderUI from "../components/homeComponents/SliderB";
 import NoData from "../assets/imgs/noData.png";
+import { Link } from "react-router-dom";
 
 const ViewPage = () => {
   const [activeTab, setActiveTab] = useState("description");
   const { id, setId } = useContext(Fanta);
   const { secid, setSecId } = useContext(Cola);
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(0);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,6 +22,13 @@ const ViewPage = () => {
     const foundProduct = Data.find((item) => item.id === id[0]);
     setProduct(foundProduct);
   }, [id]);
+
+  const incrementQuantity = () => setQuantity(quantity + 1);
+  const decrementQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
 
   return (
     <div className="w-full items-center justify-center">
@@ -96,17 +106,26 @@ const ViewPage = () => {
               </div>
               <div className="flex gap-5 items-center justify-start mt-6">
                 <div className="flex items-center justify-center gap-5">
-                  <button className="flex items-center justify-center w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] font-normal">
+                  <button
+                    onClick={decrementQuantity}
+                    disabled={quantity === 0}
+                    className="flex items-center justify-center w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] font-normal"
+                  >
                     -
                   </button>
-                  <p>0</p>
-                  <button className="w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] flex items-center justify-center text-center font-normal">
+                  <p>{quantity}</p>
+                  <button
+                    onClick={incrementQuantity}
+                    className="w-[33px] h-[38px] bg-green-500 rounded-[29px] text-white text-[28px] flex items-center justify-center text-center font-normal"
+                  >
                     +
                   </button>
                 </div>
-                <button className="w-[130px] text-white uppercase text-sm font-bold h-10 bg-green-500 rounded-md">
-                  Buy NOW
-                </button>
+                <Link to="/cart">
+                  <button className="w-[130px] text-white uppercase text-sm font-bold h-10 bg-green-500 rounded-md">
+                    Buy NOW
+                  </button>
+                </Link>
                 <button
                   onClick={() =>
                     secid.includes(product.id)
