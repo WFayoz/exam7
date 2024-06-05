@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./layouts/header/Header";
 import Footer from "./layouts/footer/Footer";
@@ -12,12 +12,13 @@ import AccountPage from "./pages/AccountPage";
 export const Fanta = createContext();
 export const Cola = createContext();
 const App = () => {
+
   const [id, setId] = useState([]);
   const [secid, setSecId] = useState([]);
   return (
     <Fanta.Provider value={{ id, setId }}>
       <Cola.Provider value={{ secid, setSecId }}>
-        <div className="flex flex-col mx-auto max-w-[1240px] w-full px-5 bg-white">
+        <div className="flex flex-col mx-auto w-[1240px]  px-5 bg-white">
           <Router>
             <Header />
             <Routes>

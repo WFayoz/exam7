@@ -6,10 +6,10 @@
   transition: 300ms;
 }
 
-.active{
+.active {
   border-bottom: 4px solid #1aad51;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
   font-weight: 700;
   transition: all ease 500ms;
-  
 }
+
