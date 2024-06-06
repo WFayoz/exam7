@@ -8,6 +8,7 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ViewPage from "./pages/ViewPage";
 import AccountPage from "./pages/AccountPage";
+import ThanksMessage from "./pages/ThanksMessage";
 
 export const Fanta = createContext();
 export const Cola = createContext();
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/Checkout" element={<CheckoutPage />} />
               <Route path="/shop" element={<ViewPage />} />
               <Route path="/Account" element={<AccountPage />} />
+              <Route path="/done" element={<ThanksMessage />} />
             </Routes>
             <Footer />
           </Router>

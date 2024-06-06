@@ -118,7 +118,7 @@ const ProductsHm = () => {
           Sort by:
         </div>
         <div
-          className="left-[714px] top-0 absolute text-neutral-700 text-[15px] font-normal flex gap-2 leading-none cursor-pointer"
+          className="left-[714px]  top-0 absolute text-neutral-700 text-[15px] font-normal flex gap-2 leading-none cursor-pointer"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
           {sortOption === "default"
@@ -129,7 +129,7 @@ const ProductsHm = () => {
           <img src={arrowdown} alt="" />
         </div>
         {isDropdownOpen && (
-          <div className="left-[714px] top-[23px] absolute bg-white border border-neutral-200 rounded shadow-md">
+          <div className="left-[714px] z-50 top-[23px] absolute bg-white border border-neutral-200 rounded shadow-md">
             <div
               onClick={() => handleSortChange("default")}
               className="px-4 py-2 cursor-pointer hover:bg-gray-100"

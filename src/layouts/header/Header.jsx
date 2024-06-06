@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../assets/icons/logo.svg";
 import search from "../../assets/icons/headerSearch.svg";
 import basket from "../../assets/icons/headerBasket.svg";
@@ -12,13 +12,23 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import { NavLink } from "react-router-dom";
+import SearchModal from "../../components/SearchModal";
 
 const Header = () => {
-  const { secid, setSecId } = useContext(Cola);
+  const { secid } = useContext(Cola);
+  const [isSearchModalOpen, setSearchModalOpen] = useState(false);
+
+  const handleSearchClick = () => {
+    setSearchModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSearchModalOpen(false);
+  };
 
   return (
-    <div className=" flex w-full z-50 mb-20 ">
-      <nav className="w-full flex max-w-[1200px] bg-white  border-b-green-500  fixed border-b items-center justify-between">
+    <div className="flex w-full z-50 mb-20">
+      <nav className="w-full flex max-w-[1200px] bg-white border-b-green-500 fixed border-b items-center justify-between">
         <div>
           <Link to="/">
             <img src={logo} alt="" />
@@ -45,7 +55,7 @@ const Header = () => {
           </Link>
         </ul>
         <div className="flex items-center justify-center gap-12">
-          <button>
+          <button onClick={handleSearchClick}>
             <img src={search} alt="Search" />
           </button>
           <Link
@@ -72,6 +82,7 @@ const Header = () => {
           </SignedIn>
         </div>
       </nav>
+      {isSearchModalOpen && <SearchModal onClose={handleCloseModal} />}
     </div>
   );
 };

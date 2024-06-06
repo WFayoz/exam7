@@ -1,5 +1,4 @@
 import React from "react";
-import heroBg from "../assets/imgs/heroBg.png";
 import sale from "../assets/imgs/saleHm.png";
 import summercac from "../assets/imgs/summercac.jpeg";
 import arrowleft from "../assets/icons/arrowleft.svg";
@@ -10,34 +9,12 @@ import MinimumDistanceSlider from "../components/homeComponents/SliderHm";
 import { items } from "../services/items";
 import { blog } from "../services/blog";
 import { sizes } from "../services/sizes";
+import Slider from "../components/homeComponents/SliderHero";
 
 const HomePage = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center pt-4">
-      <section className="flex px-10 w-full items-center justify-between bg-[#fafafa]">
-        <div>
-          <div className="text-neutral-700 text-sm font-medium  uppercase leading-none tracking-wider">
-            Welcome to GreenShop
-          </div>
-          <h1 className="text-neutral-700 leading-tight text-[70px] font-black">
-            LET'S MAKE A <br /> BETTER{" "}
-            <span className="text-green-500">PLANET</span>
-          </h1>
-          <p className="w-[557px] h-[45px] leading-relaxed text-neutral-500 text-sm font-normal font-['Cera Pro'] leading-normal">
-            We are an online plant shop offering a wide range of cheap and
-            trendy plants. Use our plants to create an unique Urban Jungle.
-            Order your favorite plants!
-          </p>
-          <Link to="./shop">
-            <button className="text-white mt-11 w-[140px] h-10 bg-green-500 rounded-md text-base font-bold  uppercase leading-tight">
-              shop now
-            </button>
-          </Link>
-        </div>
-        <div className="w-[518px] h-[518px]">
-          <img src={heroBg} alt="" />
-        </div>
-      </section>
+      <Slider />
       <section className="w-full pt-10 flex p-0 items-start justify-between">
         <div className="flex flex-col w-[25%] items-center justify-center bg-[#fafafa] px-7 pt-4 ">
           <div className="flex flex-col w-full items-center justify-center gap-10">

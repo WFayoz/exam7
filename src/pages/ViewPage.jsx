@@ -34,11 +34,9 @@ const ViewPage = () => {
     <div className="w-full items-center justify-center">
       <div className="w-full mt-6 h-full flex items-center justify-center flex-col">
         {!product ? (
-          <img
-            src={NoData}
-            alt="No Data"
-            className="w-[444px] h-[444px] flex justify-center"
-          />
+          <h1 className="font-bold leading-[350px] text-green-500 text-[30px]">
+            No Product Selected
+          </h1>
         ) : (
           <div className="flex items-stretch justify-between">
             <div className="w-1/2 flex items-center justify-center gap-4">
@@ -183,7 +181,44 @@ const ViewPage = () => {
         <div>
           {activeTab === "description" && (
             <div className="mt-2">
-              <p className="text-neutral-500 text-sm font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis est quam harum minima iusto et, iste quasi sint voluptatum, quaerat ex recusandae rem, facere labore corrupti! Delectus velit modi architecto at consectetur nihil, aspernatur consequatur eum, in id veniam ab ullam quo dolores alias nostrum quod magnam nesciunt voluptates quidem ex. Voluptates quis expedita, incidunt deleniti velit vel molestiae dolore corporis, officiis ducimus maiores nesciunt, ut magni deserunt debitis illo quod consectetur illum eligendi qui quidem autem. Possimus, incidunt ut id voluptate nihil non culpa! Recusandae nostrum eum totam harum odio corporis sapiente consequatur officiis at necessitatibus, veritatis voluptatum ipsa maiores suscipit sunt impedit veniam ea architecto cum mollitia amet. Quaerat qui numquam porro, repudiandae perspiciatis sunt odio impedit tempore nihil ad molestias id adipisci. Nesciunt deleniti ea odit rem. Animi, sed laudantium nemo doloremque iste dolor, quisquam ea itaque non quam saepe veniam perspiciatis dolore, laboriosam eligendi ab qui aperiam deserunt eum. Doloribus sed, ullam asperiores quidem quaerat exercitationem omnis in, maiores itaque perspiciatis animi earum. Expedita a ratione excepturi esse delectus officiis reprehenderit? Dolore quis, debitis sequi accusantium exercitationem incidunt, doloribus voluptate ratione consequuntur laudantium nesciunt. Rerum, explicabo debitis. Provident quasi eveniet fugit corporis placeat! Voluptates earum suscipit recusandae at odio praesentium neque dolorem alias consequatur repellat iure, asperiores dolorum, totam magni saepe non eligendi velit itaque veniam veritatis officia! Quisquam blanditiis at quod adipisci cumque, odio repellat porro dolor alias quasi ipsa doloribus assumenda ut delectus placeat impedit aliquid quis illum, non beatae nobis, quas unde reprehenderit officia. Vel dignissimos dolor quam minima qui. Officiis, a nemo odit quod illo facere autem quaerat veniam consectetur voluptatum labore dolore sed voluptatem fuga iusto repudiandae tempore, earum, quidem et eveniet totam veritatis quibusdam explicabo. Quia obcaecati maiores eaque voluptate vel, minima impedit. Error dolore explicabo vel, tempore sapiente in.</p>
+              <p className="text-neutral-500 text-sm font-normal">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+                est quam harum minima iusto et, iste quasi sint voluptatum,
+                quaerat ex recusandae rem, facere labore corrupti! Delectus
+                velit modi architecto at consectetur nihil, aspernatur
+                consequatur eum, in id veniam ab ullam quo dolores alias nostrum
+                quod magnam nesciunt voluptates quidem ex. Voluptates quis
+                expedita, incidunt deleniti velit vel molestiae dolore corporis,
+                officiis ducimus maiores nesciunt, ut magni deserunt debitis
+                illo quod consectetur illum eligendi qui quidem autem. Possimus,
+                incidunt ut id voluptate nihil non culpa! Recusandae nostrum eum
+                totam harum odio corporis sapiente consequatur officiis at
+                necessitatibus, veritatis voluptatum ipsa maiores suscipit sunt
+                impedit veniam ea architecto cum mollitia amet. Quaerat qui
+                numquam porro, repudiandae perspiciatis sunt odio impedit
+                tempore nihil ad molestias id adipisci. Nesciunt deleniti ea
+                odit rem. Animi, sed laudantium nemo doloremque iste dolor,
+                quisquam ea itaque non quam saepe veniam perspiciatis dolore,
+                laboriosam eligendi ab qui aperiam deserunt eum. Doloribus sed,
+                ullam asperiores quidem quaerat exercitationem omnis in, maiores
+                itaque perspiciatis animi earum. Expedita a ratione excepturi
+                esse delectus officiis reprehenderit? Dolore quis, debitis sequi
+                accusantium exercitationem incidunt, doloribus voluptate ratione
+                consequuntur laudantium nesciunt. Rerum, explicabo debitis.
+                Provident quasi eveniet fugit corporis placeat! Voluptates earum
+                suscipit recusandae at odio praesentium neque dolorem alias
+                consequatur repellat iure, asperiores dolorum, totam magni saepe
+                non eligendi velit itaque veniam veritatis officia! Quisquam
+                blanditiis at quod adipisci cumque, odio repellat porro dolor
+                alias quasi ipsa doloribus assumenda ut delectus placeat impedit
+                aliquid quis illum, non beatae nobis, quas unde reprehenderit
+                officia. Vel dignissimos dolor quam minima qui. Officiis, a nemo
+                odit quod illo facere autem quaerat veniam consectetur
+                voluptatum labore dolore sed voluptatem fuga iusto repudiandae
+                tempore, earum, quidem et eveniet totam veritatis quibusdam
+                explicabo. Quia obcaecati maiores eaque voluptate vel, minima
+                impedit. Error dolore explicabo vel, tempore sapiente in.
+              </p>
             </div>
           )}
           {activeTab === "reviews" && <div></div>}

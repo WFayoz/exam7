@@ -1,12 +1,14 @@
 import { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";  // Import useNavigate
 import { Cola } from "../App";
 import Data from "../services/data";
 import Delete from "../assets/icons/delete.svg";
 import SliderUI from "../components/homeComponents/SliderB";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
-  const { secid } = useContext(Cola);
+  const { secid, setSecid } = useContext(Cola);
+  const navigate = useNavigate();  // Initialize useNavigate
 
   const initialCartItems = Data.filter((item) => secid.includes(item.id)).map(
     (item) => ({
@@ -40,8 +42,15 @@ const CartPage = () => {
     );
   };
 
-  const handleDelete = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+  const handleDelete = (itemId) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== itemId)
+    );
+    setSecid((prevSecid) => prevSecid.filter((id) => id !== itemId));
+  };
+
+  const handleCheckout = () => {
+    navigate("/checkout", { state: { selectedProducts: cartItems } });
   };
 
   return (
@@ -63,7 +72,7 @@ const CartPage = () => {
             </h1>
           </div>
           <div className="w-full mt-3 h-[0px] border border-green-500/50"></div>
-          <div className="flex flex-col w-full gap-3 h-72 overflow-scroll py-5">
+          <div className="flex flex-col w-full gap-3 h-80 overflow-scroll py-5">
             {cartItems.map((item) => (
               <div
                 key={item.id}
@@ -88,7 +97,7 @@ const CartPage = () => {
                 <h1 className="text-neutral-500 text-base font-medium leading-none ml-[100px]">
                   ${item.price}
                 </h1>
-                <div className="flex items-center justify-center gap-3 ml-28">
+                <div className="flex items-center justify-center w-20 gap-3 ml-28">
                   <button
                     onClick={() => handleQuantityChange(item.id, -1)}
                     className="w-[21.71px] h-[25px] bg-green-500 rounded-[29px] text-white text-[22px] flex items-center justify-center"
@@ -105,7 +114,7 @@ const CartPage = () => {
                     +
                   </button>
                 </div>
-                <h1 className="text-green-500 w text-base font-bold leading-none ml-20">
+                <h1 className="text-green-500 w text-base font-bold w-20 leading-none ml-24">
                   ${item.price * item.quantity}
                 </h1>
                 <div className="flex ml-16">
@@ -129,7 +138,16 @@ const CartPage = () => {
           <p className="text-neutral-700 text-sm font-normal mt-3 leading-none">
             Coupon Apply
           </p>
-          <div></div>
+          <div className="flex items-center mt-3">
+            <input
+              type="text"
+              placeholder="Enter coupon code here..."
+              className="flex-1 p-2 border border-gray-300 rounded-l-md outline-none"
+            />
+            <button className="h-full bg-green-500 text-white py-2 px-6 rounded-r-md cursor-pointer">
+              Apply
+            </button>
+          </div>
           <div className="flex flex-col items-start justify-center gap-4 mt-5">
             <p className="text-neutral-700 text-[15px] font-normal">
               Subtotal: ${totalPrice}
@@ -141,12 +159,12 @@ const CartPage = () => {
             </h1>
           </div>
           <div className="flex flex-col items-center justify-center mt-7">
-            <Link
-              to="/checkout"
+            <button
+              onClick={handleCheckout}
               className="text-white text-[15px] font-bold w-full px-10 py-3 bg-green-500 rounded-[3px]"
             >
               Proceed To Checkout
-            </Link>
+            </button>
             <Link
               to="/"
               className="mt-3 text-green-500 text-[15px] font-normal font-['Cera Pro'] leading-none"
